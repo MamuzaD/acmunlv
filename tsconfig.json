@@ -21,9 +21,6 @@
     "paths": {
       "@/*": [
         "./src/*"
-      ],
-      "@/generated/*": [
-        "./generated/*"
       ]
     },
     "plugins": [
@@ -46,7 +43,6 @@
     ".next/dev/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules",
-    "generated/prisma/**"
+    "node_modules"
   ]
 }

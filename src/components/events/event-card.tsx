@@ -1,7 +1,6 @@
 import { Button } from '@/components/ui/button'
-import { Event } from '@/generated/prisma'
+import type { Event } from '@/data/events'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card'
-import EditEventCard from './edit/event-edit'
 
 const formatDate = (date: Date) =>
   new Intl.DateTimeFormat('en-US', {
@@ -28,10 +27,9 @@ const formatTime = (time: Date) =>
 
 interface EventCardProps {
   event: Event
-  onChange?: () => void
 }
 
-export const EventCard = ({ event, onChange }: EventCardProps) => {
+export const EventCard = ({ event }: EventCardProps) => {
   const formattedDate = formatDate(event.date)
   const formattedStartTime = event.startTime ? formatTime(event.startTime) : 'N/A'
   const formattedEndTime = event.endTime ? formatTime(event.endTime) : 'N/A'
@@ -43,14 +41,11 @@ export const EventCard = ({ event, onChange }: EventCardProps) => {
 
   return (
     <Card className="w-[425px] transition hover:scale-105">
-      <CardHeader className="relative">
+      <CardHeader>
         <CardTitle>{event.title}</CardTitle>
         <CardDescription>
           {`${formattedDate} | ${dayOfWeek(event.date)} ${event.startTime ? `${formattedStartTime} - ${formattedEndTime}` : ''}`}
         </CardDescription>
-        <div className="absolute right-3 top-1">
-          <EditEventCard event={event} onUpdated={onChange} />
-        </div>
       </CardHeader>
       <CardContent>
         <p>{event.description}</p>
