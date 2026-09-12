@@ -29,7 +29,7 @@ export const Header = () => {
     setOpen(false)
   }
   return (
-    <header className="fixed top-0 z-30 w-full bg-background px-5 shadow-md transition duration-500 ease-in-out md:bg-opacity-90">
+    <header className="w-full bg-background px-5 shadow-md transition duration-500 ease-in-out md:bg-opacity-90">
       <div className="flex h-20 items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex flex-row items-center justify-center transition ease-in hover:scale-105">

@@ -3,6 +3,7 @@ import '@/styles/global.css'
 import type { Metadata } from 'next'
 import { siteMetadata, seoKeywords } from '@/data/seo-meta'
 import { ScrollToTop } from '@/components/common/scroll-to-top'
+import { ArchiveBanner } from '@/components/layout/archive-banner'
 import { Header } from '@/components/layout/header'
 
 export const metadata: Metadata = {
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
   },
   icons: { icon: siteMetadata.icon },
   description: siteMetadata.description,
-  metadataBase: new URL('https://acm.cs.unlv.edu/'),
+  metadataBase: new URL('https://acmunlv.vercel.app/'),
   openGraph: {
     url: './',
     type: 'website',
@@ -63,7 +64,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       */}
       <head />
       <body suppressHydrationWarning className="antialiased">
-        <Header />
+        <div className="sticky top-0 z-40">
+          <ArchiveBanner />
+          <Header />
+        </div>
         {children}
         <ScrollToTop />
       </body>
